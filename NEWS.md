@@ -13,6 +13,11 @@
 * Fix `relocate()` to handle `<tidy-select>` helpers consistently with `dplyr`
   (@Yousa-Mirage, #357).
 
+## Bug fixes
+
+- Fix a bug leading `right_join()`/`semi_join()`/`anti_join()` to look up key name
+  wrongly and set incorrect column name (@Yousa-Mirage, #350).
+
 # tidypolars 0.18.0
 
 `tidypolars` requires `polars` >= 1.10.0.
