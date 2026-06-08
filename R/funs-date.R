@@ -317,7 +317,7 @@ pl_strptime <- function(string, format, tz = "", strict = TRUE, ...) {
   tz <- polars_expr_to_r(tz)
   strict <- polars_expr_to_r(strict)
   if (grepl("%(I|H|c|T|M|p|r|R|S|X|z)", format)) {
-    dtype <- pl$Datetime("us", tz = tz)
+    dtype <- pl$Datetime("us", time_zone = tz)
   } else {
     dtype <- pl$Date
   }
