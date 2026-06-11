@@ -12,6 +12,7 @@
   (@Yousa-Mirage, #353).
 * Fix `relocate()` to handle `<tidy-select>` helpers consistently with `dplyr`
   (@Yousa-Mirage, #357).
+* Fix the `tz` argument in `strptime()` (@dejse, #361)
 
 ## Bug fixes
 
