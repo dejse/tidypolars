@@ -292,3 +292,18 @@ test_that("rollbackward and rollforward work - datetime", {
     }
   )
 })
+
+test_that("strptime() works", {
+  test_df <- tibble(
+    s = "2026-01-01 01:02:03"
+  )
+  test_pl <- as_polars_df(test_df)
+
+  expect_equal(
+    test_df |>
+      mutate(s = base::strptime(s, format = "%Y-%m-%d %H:%M:%S", tz = "UTC")) |>
+      mutate(s = as.POSIXct(s)),
+    test_pl |>
+      mutate(s = base::strptime(s, format = "%Y-%m-%d %H:%M:%S", tz = "UTC"))
+  )
+})
