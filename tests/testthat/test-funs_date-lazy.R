@@ -175,7 +175,10 @@ test_that("strptime() works", {
       mutate(foo = strptime(to_ymd_hms, "%Y-%m-%d %H:%M:%S", tz = "UTC")),
     test_df |>
       mutate(
-        foo = as.POSIXct(strptime(to_ymd_hms, "%Y-%m-%d %H:%M:%S", tz = "UTC"))
+        foo = as.POSIXct(
+          strptime(to_ymd_hms, "%Y-%m-%d %H:%M:%S", tz = "UTC"),
+          tz = "UTC"
+        )
       )
   )
   expect_equal_lazy(
