@@ -161,19 +161,11 @@ test_that("strptime() works", {
   )
   test_pl <- as_polars_df(test_df)
 
-  # TODO: fails in CI with:
-  #
-  # ── Failure ('test-funs_date-lazy.R:168:3'): strptime() works ───────────────────
-  # Expected `x` to equal `y`.
-  # Differences:
-  # `attr(actual$foo, 'tzone')`:   ""
-  # `attr(expected$foo, 'tzone')`: "UTC"
-
-  # expect_equal(
-  #   test_pl |> mutate(foo = strptime(somedate, "%b %d %Y")),
-  #   test_df |>
-  #     mutate(foo = as.POSIXct(strptime(somedate, "%b %d %Y")))
-  # )
+  expect_equal(
+    test_pl |> mutate(foo = strptime(somedate, "%b %d %Y")),
+    test_df |>
+      mutate(foo = as.POSIXct(strptime(somedate, "%b %d %Y")))
+  )
 
   # Polars converts to POSIXct and not to POSIXlt
   expect_equal(

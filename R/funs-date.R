@@ -315,7 +315,9 @@ pl_strptime <- function(string, format, tz = "", ...) {
   check_empty_dots(...)
   format <- polars_expr_to_r(format)
   tz <- polars_expr_to_r(tz)
-  # Base R always returns a POSIXlt
+  if (identical(tz, "")) {
+    tz <- Sys.timezone()
+  }
   dtype <- pl$Datetime("us", time_zone = tz)
   string$cast(pl$String)$str$strptime(
     dtype = dtype,
